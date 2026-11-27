@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Basic</title>
+    
+</head>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#box').hover(function () {
+            // 스타일을 변경합니다.
+            $('#box').addClass('hover');
+        }, function () {
+            // 스타일을 변경합니다.
+            $('#box').removeClass('hover');
+        });
+    });
+</script>
+<body>
+    <h4>3.4클래스 조작</h4>
+    </hr>
+
+    <div id="box"></div>
+</body>
+
+</html>
