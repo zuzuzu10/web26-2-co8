@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>게임 추천소 - 게임 추천 블로그</title>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Malgun Gothic",sans-serif}body{background:#101522;color:#e8edf7}a{text-decoration:none;color:inherit}li{list-style:none}#page-wrapper{width:min(1000px,94%);margin:28px auto;padding:22px;background:#171e2e;border:1px solid #303b52;border-radius:14px}header{padding:32px 20px;text-align:center;background:linear-gradient(135deg,#252f48,#172033);border-radius:12px;margin-bottom:18px}header h1{font-size:32px;color:#7ee7d5;letter-spacing:1px}header p{margin-top:10px;color:#aebbd2}nav{min-height:48px;border-top:1px solid #3a465d;border-bottom:1px solid #3a465d;margin-bottom:20px;display:flex;align-items:stretch;position:relative}.outer-menu-item{position:relative}.menu-title{display:block;padding:15px 18px;font-weight:bold;color:#cbd6eb;cursor:pointer}.outer-menu-item:hover,.outer-menu-item:focus-within{background:#26344c}.inner-menu{display:none;position:absolute;top:100%;left:0;width:160px;background:#1b263a;border:1px solid #43516a;z-index:20;box-shadow:0 8px 20px #0005}.inner-menu a{display:block;padding:11px 12px;color:#dce5f5}.inner-menu a:hover{background:#2d405c}.search-bar{margin-left:auto;display:flex;align-items:center;padding:7px}.search-bar input{width:180px;height:32px;padding:7px;border:1px solid #475570;background:#111827;color:#fff;border-radius:6px 0 0 6px}.search-bar button,.action-btn{height:32px;padding:0 13px;border:0;background:#52d6c3;color:#10202b;font-weight:bold;border-radius:0 6px 6px 0;cursor:pointer}.intro{padding:16px 18px;background:#202b40;border-left:4px solid #52d6c3;border-radius:8px;margin-bottom:18px;color:#cbd6eb;line-height:1.7}.intro strong{color:#7ee7d5}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.toolbar label{color:#aebbd2;font-size:14px}.toolbar select{padding:9px;background:#111827;color:#e8edf7;border:1px solid #475570;border-radius:6px}.count{margin-left:auto;color:#9eabc2;font-size:13px}#content{display:flex;gap:18px;align-items:flex-start}#main-section{flex:1;min-width:0}.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.game-card{padding:16px;background:#202a3d;border:1px solid #35435c;border-radius:12px}.game-card h2{font-size:19px;margin-bottom:7px;color:#f0f5ff}.game-card .genre{display:inline-block;font-size:12px;color:#7ee7d5;background:#153b3c;padding:4px 8px;border-radius:20px;margin-bottom:9px}.game-card p{font-size:14px;line-height:1.6;color:#b8c4d9;margin-bottom:13px}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}.favorite{border:1px solid #53617a;background:#28364c;color:#e8edf7;padding:8px 10px;border-radius:7px;cursor:pointer}.favorite.is-favorite{background:#613049;border-color:#d36a9b;color:#ffd4e7}.empty-message{padding:24px;text-align:center;color:#aebbd2;background:#202a3d;border-radius:10px}.sidebar{width:235px;padding:16px;background:#202a3d;border-radius:10px}.sidebar section{margin-bottom:18px}.sidebar h3{font-size:16px;color:#7ee7d5;margin-bottom:9px}.sidebar li{padding:6px 0;color:#c1cde0;font-size:13px}.sidebar p{font-size:13px;line-height:1.6;color:#c1cde0}.add-box{margin-top:18px;padding:18px;background:#202a3d;border:1px solid #35435c;border-radius:10px}.add-box h2{font-size:18px;margin-bottom:12px;color:#7ee7d5}.add-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}.add-form input,.add-form select,.add-form textarea{width:100%;padding:10px;border:1px solid #475570;background:#111827;color:#e8edf7;border-radius:6px}.add-form textarea{grid-column:1/-1;min-height:70px;resize:vertical}.add-form button{grid-column:1/-1;border-radius:6px;height:38px}.status{margin-top:10px;font-size:13px;color:#7ee7d5;min-height:18px}footer{margin-top:22px;padding:18px;text-align:center;background:#202a3d;border-radius:10px;color:#98a8c3;font-size:13px}@media(max-width:760px){nav{flex-wrap:wrap}.search-bar{width:100%;margin:0}.search-bar input{flex:1}#content{display:block}.sidebar{width:100%;margin-top:18px}.game-grid{grid-template-columns:1fr}.count{margin-left:0}}
+</style>
+</head>
+<body><div id="page-wrapper">
+<header><h1>🎮 게임 추천소</h1><p>종강하고 할 게임 선택해보자~</p></header>
+<nav id="main-navigation">
+<div class="outer-menu-item"><span class="menu-title">게임 찾기 ▾</span><ul class="inner-menu"><li><a href="#games">전체 게임</a></li><li><a href="#games">MOBA</a></li><li><a href="#games">액션·RPG</a></li></ul></div>
+<div class="outer-menu-item"><span class="menu-title">추천 게시판 ▾</span><ul class="inner-menu"><li><a href="#add-game">게임 추천 등록</a></li><li><a href="#favorites">내 찜 목록</a></li></ul></div>
+<div class="outer-menu-item"><span class="menu-title">사이트 소개 ▾</span><ul class="inner-menu"><li><a href="#intro">게임 추천소란?</a></li><li><a href="#add-game">추천 참여하기</a></li></ul></div>
+<form class="search-bar" id="search-form"><input id="game-search" type="search" placeholder="게임 이름 검색" aria-label="게임 이름 검색"><button type="submit">검색</button></form>
+</nav>
+<div class="intro" id="intro"><strong>누가, 무엇을 하려고 내 페이지를 사용할까?</strong><br>게임을 좋아하는 학생들이 자신의 취향에 맞는 게임을 찾고, 재미있게 플레이한 게임을 서로 추천하려고 사용하는 페이지입니다.</div>
+<div class="toolbar"><label for="genre-filter">장르별 보기</label><select id="genre-filter"><option value="all">전체 장르</option><option value="MOBA">MOBA</option><option value="FPS">FPS</option><option value="RPG">RPG</option><option value="액션">액션</option><option value="전략">전략</option></select><span class="count" id="result-count">게임 6개</span></div>
+<div id="content"><main id="main-section"><section id="games"><div class="game-grid" id="game-list">
+<article class="game-card" data-name="리그 오브 레전드" data-genre="MOBA"><h2>리그 오브 레전드</h2><span class="genre">MOBA</span><p>팀원과 협력해 상대 넥서스를 파괴하는 전략형 팀 게임. 다양한 챔피언을 골라 플레이해 보세요.</p><div class="card-bottom"><span>5 vs 5 팀 플레이</span><button class="favorite" type="button" aria-pressed="false">♡ 찜 <span class="fav-count">0</span></button></div></article>
+<article class="game-card" data-name="발로란트" data-genre="FPS"><h2>발로란트</h2><span class="genre">FPS</span><p>요원마다 다른 스킬을 활용하는 전술 슈팅 게임. 정확한 조준과 팀 전략이 중요해요.</p><div class="card-bottom"><span>전술 슈팅</span><button class="favorite" type="button" aria-pressed="false">♡ 찜 <span class="fav-count">0</span></button></div></article>
+<article class="game-card" data-name="오버워치 2" data-genre="FPS"><h2>오버워치 2</h2><span class="genre">FPS</span><p>개성 있는 영웅을 선택해 역할을 나누고 목표를 달성하는 팀 기반 슈팅 게임.</p><div class="card-bottom"><span>영웅 슈팅</span><button class="favorite" type="button" aria-pressed="false">♡ 찜 <span class="fav-count">0</span></button></div></article>
+<article class="game-card" data-name="원신" data-genre="RPG"><h2>원신</h2><span class="genre">RPG</span><p>넓은 세계를 탐험하고 캐릭터와 원소 조합을 활용하는 오픈월드 액션 RPG.</p><div class="card-bottom"><span>오픈 월드</span><button class="favorite" type="button" aria-pressed="false">♡ 찜 <span class="fav-count">0</span></button></div></article>
+<article class="game-card" data-name="이터널 리턴" data-genre="액션"><h2>이터널 리턴</h2><span class="genre">액션</span><p>생존과 제작, 전투를 결합한 배틀로얄 스타일의 전략 액션 게임.</p><div class="card-bottom"><span>생존·전략</span><button class="favorite" type="button" aria-pressed="false">♡ 찜 <span class="fav-count">0</span></button></div></article>
+<article class="game-card" data-name="문명 6" data-genre="전략"><h2>문명 6</h2><span class="genre">전략</span><p>문명을 발전시키고 외교와 기술, 전쟁을 통해 승리를 노리는 턴제 전략 게임.</p><div class="card-bottom"><span>턴제 전략</span><button class="favorite" type="button" aria-pressed="false">♡ 찜 <span class="fav-count">0</span></button></div></article>
+</div><p class="empty-message" id="empty-message" hidden>검색 결과가 없습니다. 다른 게임 이름을 입력해 보세요.</p></section>
+<section class="add-box" id="add-game"><h2>✍️ 게임 추천 등록</h2><form class="add-form" id="recommend-form"><input id="new-game-name" type="text" maxlength="30" placeholder="게임 이름 (필수)"><select id="new-game-genre"><option value="">장르 선택</option><option>MOBA</option><option>FPS</option><option>RPG</option><option>액션</option><option>전략</option></select><textarea id="new-game-desc" maxlength="180" placeholder="추천 이유를 적어주세요 (필수)"></textarea><button class="action-btn" type="submit">추천 등록하기</button></form><p class="status" id="form-status" role="status"></p></section>
+</main><aside class="sidebar"><section><h3>📌 인기 장르</h3><ul><li>MOBA · 팀 전략</li><li>FPS · 전술 슈팅</li><li>RPG · 모험과 성장</li><li>전략 · 두뇌 플레이</li></ul></section><section id="favorites"><h3>💖 내 찜 목록</h3><p>찜한 게임 수: <strong id="total-favorites">0</strong>개</p><p>마음에 드는 게임의 찜 버튼을 눌러보세요. 다시 누르면 찜이 취소됩니다.</p></section><section><h3>오늘의 한마디</h3><p>좋은 게임은 함께 즐길 때 더 재미있다!</p></section></aside></div>
+<footer>게임 추천소 · 게임 취향을 나누는 작은 공간</footer></div>
+<script>
+$(function(){
+  // 드롭다운: 교재의 hover() 동작을 유지해 메뉴에 마우스를 올리면 하위 메뉴를 표시합니다.
+  $('.outer-menu-item').hover(function(){ $(this).find('.inner-menu').show(); },function(){ $(this).find('.inner-menu').hide(); });
+  let totalFavorites=0;
+  // 공통 필터: 검색어와 선택 장르에 맞는 카드만 보여주고 결과 수를 갱신합니다.
+  function filterGames(){
+    const keyword=$('#game-search').val().trim().toLowerCase();
+    const genre=$('#genre-filter').val(); let visible=0;
+    $('.game-card').each(function(){
+      const name=String($(this).attr('data-name')||'').toLowerCase();
+      const cardGenre=$(this).attr('data-genre');
+      const matchName=name.includes(keyword); const matchGenre=genre==='all'||cardGenre===genre;
+      $(this).toggle(matchName&&matchGenre); if(matchName&&matchGenre) visible++;
+    });
+    $('#result-count').text('게임 '+visible+'개'); $('#empty-message').prop('hidden',visible!==0);
+  }
+  // 이벤트 1: input - 게임 이름을 입력하는 즉시 검색 결과를 바꿉니다.
+  $('#game-search').on('input',function(){filterGames();});
+  // 이벤트 2: change - 장르 선택이 바뀌면 해당 장르 카드만 분류해 보여줍니다.
+  $('#genre-filter').on('change',function(){filterGames();});
+  // 검색 버튼도 검색 입력과 같은 필터를 실행합니다.
+  $('#search-form').on('submit',function(e){e.preventDefault();filterGames();});
+  // 이벤트 3: click - 찜 버튼을 누를 때마다 해당 게임 찜 상태와 전체 찜 수를 토글합니다.
+  $('#game-list').on('click','.favorite',function(){
+    const button=$(this); const wasFavorite=button.hasClass('is-favorite');
+    if(wasFavorite){button.removeClass('is-favorite').attr('aria-pressed','false');button.find('.fav-count').text('0');button.contents().first()[0].textContent='♡ 찜 ';totalFavorites--;}
+    else{button.addClass('is-favorite').attr('aria-pressed','true');button.find('.fav-count').text('1');button.contents().first()[0].textContent='♥ 찜 ';totalFavorites++;}
+    $('#total-favorites').text(totalFavorites);
+  });
+  // 이벤트 4: submit - 입력값을 검증하고 안전하게 text()로 카드에 표시합니다.
+  $('#recommend-form').on('submit',function(e){
+    e.preventDefault();const name=$('#new-game-name').val().trim();const genre=$('#new-game-genre').val();const desc=$('#new-game-desc').val().trim();
+    if(!name||!genre||!desc){$('#form-status').text('게임 이름, 장르, 추천 이유를 모두 입력해 주세요.');return;}
+    if(name.length<2||desc.length<5){$('#form-status').text('게임 이름은 2자 이상, 추천 이유는 5자 이상 입력해 주세요.');return;}
+    const card=$('<article>').addClass('game-card').attr('data-name',name).attr('data-genre',genre);
+    $('<h2>').text(name).appendTo(card);$('<span>').addClass('genre').text(genre).appendTo(card);$('<p>').text(desc).appendTo(card);
+    const bottom=$('<div>').addClass('card-bottom');$('<span>').text('사용자 추천').appendTo(bottom);$('<button>').addClass('favorite').attr({'type':'button','aria-pressed':'false'}).text('♡ 찜 ').append($('<span>').addClass('fav-count').text('0')).appendTo(bottom);bottom.appendTo(card);$('#game-list').append(card);
+    $('#form-status').text('추천 게임이 목록에 등록되었습니다.');this.reset();filterGames();
+  });
+});
+</script></body></html>
